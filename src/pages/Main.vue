@@ -38,7 +38,7 @@ export default {
         position: absolute;
         z-index: 999;
         width: 15%;
-        height: 100%;
+        height: 90%;
     }
     .ProjectTreeMenuStyle{
         width: 100%;
