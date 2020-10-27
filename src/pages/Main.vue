@@ -37,18 +37,18 @@ export default {
     .SideBar{
         position: absolute;
         z-index: 999;
-        width: 100%;
+        width: 15%;
         height: 100%;
     }
     .ProjectTreeMenuStyle{
-        width: 15%;
+        width: 100%;
         height:50%;
         box-shadow: 0px 3px 6px rgba(112, 112, 112, 0.16);
         border-radius: 8px;
     }
     .AttributeMenuStyle{
         margin-top: 5%;
-        width: 15%;
+        width: 100%;
         height:20%;
         box-shadow: 0px 3px 6px rgba(112, 112, 112, 0.16);
         border-radius: 8px;
