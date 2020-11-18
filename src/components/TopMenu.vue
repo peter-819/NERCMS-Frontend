@@ -1,9 +1,9 @@
 <template>
     <div class="TopMenu">
-        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
             <el-submenu index="1">
                 <template slot="title">工程</template>
-                    <el-menu-item index="1-1">新建</el-menu-item>
+                    <el-menu-item index="1-1" @click="ShowDialog('NewProject')">新建</el-menu-item>
                     <el-menu-item index="1-2">保存</el-menu-item>
                     <el-menu-item index="1-3">打开</el-menu-item>
                     <el-menu-item index="1-4">关闭</el-menu-item>
@@ -26,7 +26,7 @@
 
           <el-submenu index="3">
             <template slot="title">点云</template>
-            <el-menu-item index="3-1">打开点云</el-menu-item>
+            <el-menu-item index="3-1" @click="ShowDialog('OpenPCD')">打开点云</el-menu-item>
             <el-menu-item index="3-2">降噪</el-menu-item>
             <el-menu-item index="3-3">平滑</el-menu-item>
             <el-menu-item index="3-4">fuse...</el-menu-item>
@@ -51,18 +51,20 @@
 </template>
 
 <script>
+import {mapMutations, mapState} from 'vuex'
+
 export default {
     name:'TopMenu',
     data(){
         return{
-           activeIndex: '1',
-           activeIndex2: '1'
+           activeIndex: '1'
         }
     },
     methods: {
-      handleSelect(key, keyPath) {
-        console.log(key, keyPath);
-      }
+      ...mapMutations('Dialogs',[
+        'ShowDialog',
+        'HideDialog'
+      ])
     }
 }
 </script>

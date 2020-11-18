@@ -8,6 +8,9 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
 import VueI18n from 'vue-i18n'
+import 'es6-promise/auto'
+
+import store from './store'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)
@@ -25,6 +28,7 @@ export default i18n
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store,
   router,
   i18n:i18n,
   components: { App },

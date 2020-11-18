@@ -6,6 +6,7 @@
         <attribute-menu class="AttributeMenuStyle"></attribute-menu>
     </div>
     <viewport class="ViewportStyle"></viewport>
+    <all-dialogs></all-dialogs>
 </div>
 </template>
 
@@ -14,18 +15,21 @@ import TopMenu from '@/components/TopMenu'
 import ProjectTreeMenu from '@/components/ProjectTreeMenu'
 import AttributeMenu from '@/components/AttributeMenu'
 import Viewport from '@/components/Viewport'
+import AllDialogs from '@/components/Dialogs/AllDialogs'
 
 export default {
     name: 'Main',
     data(){
         return{
-
         }
     },
     components:{
-        TopMenu,ProjectTreeMenu,AttributeMenu,Viewport
+        TopMenu,
+        ProjectTreeMenu,
+        AttributeMenu,
+        Viewport,
+        AllDialogs
     }
-
 }
 </script>
 
