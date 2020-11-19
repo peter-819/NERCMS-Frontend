@@ -1,7 +1,7 @@
 import Vue from 'vue'
 const state = () => ({
     project:{
-        name:'',
+        name:'NewProject1',
         id:'',
         createTime:'',
         updateTime:'',

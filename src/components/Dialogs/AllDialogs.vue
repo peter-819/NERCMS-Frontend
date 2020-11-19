@@ -47,8 +47,8 @@ export default {
       ]),
       HandleNewProject(){
         this.SetProjectName(this.ProjectName);
-        this.HideDialog('NewProject');
         this.ProjectName = '';
+        this.HideDialog('NewProject');
       },
       HandleOpenPCD(){
         this.AppendProjectChild({
