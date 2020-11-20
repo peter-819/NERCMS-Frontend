@@ -5,7 +5,7 @@
         </je-dialog>
 
         <je-dialog title="打开点云" :visible="GetDialogVisiblity('OpenPCD')" :handleClose="HandleOpenPCD">
-            <span>选择文件</span><el-input v-model="PCDFilePath"></el-input>
+            <span>选择文件</span><el-input type="file" ></el-input>
             <span>名称</span><el-input v-model="PCDName"></el-input>
         </je-dialog>
     </div>
@@ -30,30 +30,58 @@ export default {
       ...mapState('Dialogs',{
         visiblity: state=>state.visiblity,
       }),
+      ...mapState('ProjectInfo',{
+        projectInfo: state=>state.project
+      }),
       ...mapGetters('Dialogs',[
           'GetDialogVisiblity'
       ])
     },
     methods: {
       ...mapMutations('ProjectInfo',[
-        'SetProjectName',
-        'SetProjectID',
-        'SetProjectCreatedTime',
-        'SetProjectUpdateTime',
+        'SetProjectAttrib',
         'AppendProjectChild'
       ]),
       ...mapMutations('Dialogs',[
         'HideDialog'
       ]),
       HandleNewProject(){
-        this.SetProjectName(this.ProjectName);
+        if(this.projectInfo.isDone){
+          this.$confirm('此操作将关闭当前工程，是否继续?','提示',{
+            confirmButtonText:'是',
+            cancelButtonText:'否',
+            type:'warning',
+            center: true
+          }).then(()=>{
+            console.log('保存');
+            this.$confirm('是否保存当前工程?','保存',{
+              confirmButtonText:'是',
+              cancelButtonText:'否',
+              type:'warning',
+              center:true
+            }).then(()=>{
+              //save
+              this.$message({
+                type:'info',
+                message:'保存成功'
+              });
+            }).catch(()=>{
+
+            });
+          }).catch(()=>{
+
+          });
+        }
+        this.SetProjectAttrib({name:'isDone',attrib:true});
+        this.SetProjectAttrib({name:'name', attrib: this.ProjectName});
         this.ProjectName = '';
         this.HideDialog('NewProject');
       },
       HandleOpenPCD(){
         this.AppendProjectChild({
             filepath:this.PCDFilePath,
-            name:this.PCDName
+            name:this.PCDName,
+            type:'ply'
         });
         this.filepath = '';
         this.name = '';

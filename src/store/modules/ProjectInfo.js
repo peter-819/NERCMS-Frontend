@@ -5,6 +5,7 @@ const state = () => ({
         id:'',
         createTime:'',
         updateTime:'',
+        isDone:'',
         childNodes:[]
     }
 })
@@ -18,10 +19,7 @@ const actions = {
 }
 
 const mutations = {
-    SetProjectName : (state,name) => Vue.set(state.project,'name',name),
-    SetProjectID : (state,id)=>Vue.set(state.project,'id',id),
-    SetProjectCreatedTime : (state,time)=>Vue.set(state.project,'createTime',time),
-    SetProjectUpdateTime : (state,time)=>Vue.set(state.project,'updateTime',time),
+    SetProjectAttrib:(state,{name,attrib}) => Vue.set(state.project,name,attrib),
     AppendProjectChild : (state,child)=>state.project.childNodes.push(child)
 }
 
