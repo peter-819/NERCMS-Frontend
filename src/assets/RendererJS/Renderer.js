@@ -19,36 +19,36 @@ export async function LoadPLYFile(viewer,filepath){
     camera.position.set(0, 0, 0);
     camera.up.y = 1;
 
-    const plane = new THREE.Mesh(
-        new THREE.PlaneBufferGeometry(40,40),
-        new THREE.MeshPhongMaterial({color : 0x999999,specular:0x101010})
-    );
-    plane.rotation.x = -Math.PI /2;
-    plane.position.y = -0.5;
-    scene.add(plane);
-    plane.receiveShadow = true;
+    // const plane = new THREE.Mesh(
+    //     new THREE.PlaneBufferGeometry(40,40),
+    //     new THREE.MeshPhongMaterial({color : 0x999999,specular:0x101010})
+    // );
+    // plane.rotation.x = -Math.PI /2;
+    // plane.position.y = -0.5;
+    // scene.add(plane);
+    // plane.receiveShadow = true;
 
-    scene.add( new THREE.HemisphereLight( 0x443333, 0x111122 ) );
-    scene.background = new THREE.Color( 0x72645b );
+    //scene.add( new THREE.HemisphereLight( 0x443333, 0x111122 ) );
+    scene.background = new THREE.Color( 0xDDDDDD );
 
-    var addShadowedLight = ( x, y, z, color, intensity ) => {
-        const directionalLight = new THREE.DirectionalLight( color, intensity );
-        directionalLight.position.set( x, y, z );
-        scene.add( directionalLight );
-        directionalLight.castShadow = true;
-        const d = 1;
-        directionalLight.shadow.camera.left = - d;
-        directionalLight.shadow.camera.right = d;
-        directionalLight.shadow.camera.top = d;
-        directionalLight.shadow.camera.bottom = - d;
-        directionalLight.shadow.camera.near = 1;
-        directionalLight.shadow.camera.far = 4;
-        directionalLight.shadow.mapSize.width = 1024;
-        directionalLight.shadow.mapSize.height = 1024;
-        directionalLight.shadow.bias = - 0.001;
-    }
-    addShadowedLight( 1, 1, 1, 0xffffff, 1.35 );
-    addShadowedLight( 0.5, 1, - 1, 0xffaa00, 1 );
+    // var addShadowedLight = ( x, y, z, color, intensity ) => {
+    //     const directionalLight = new THREE.DirectionalLight( color, intensity );
+    //     directionalLight.position.set( x, y, z );
+    //     scene.add( directionalLight );
+    //     directionalLight.castShadow = true;
+    //     const d = 1;
+    //     directionalLight.shadow.camera.left = - d;
+    //     directionalLight.shadow.camera.right = d;
+    //     directionalLight.shadow.camera.top = d;
+    //     directionalLight.shadow.camera.bottom = - d;
+    //     directionalLight.shadow.camera.near = 1;
+    //     directionalLight.shadow.camera.far = 4;
+    //     directionalLight.shadow.mapSize.width = 1024;
+    //     directionalLight.shadow.mapSize.height = 1024;
+    //     directionalLight.shadow.bias = - 0.001;
+    // }
+    //addShadowedLight( 1, 1, 1, 0xffffff, 1.35 );
+    //addShadowedLight( 0.5, 1, - 1, 0xffaa00, 1 );
     
 
     const plyLoader = new PLYLoader();

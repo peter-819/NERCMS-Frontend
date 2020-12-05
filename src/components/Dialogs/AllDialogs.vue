@@ -5,7 +5,7 @@
         </je-dialog>
 
         <je-dialog title="打开点云" :visible="GetDialogVisiblity('OpenPCD')" :handleClose="HandleOpenPCD">
-            <span>选择文件</span><el-input type="file" ></el-input>
+            <!-- <span>选择文件</span><el-input type="file" ></el-input> -->
             <span>名称</span><el-input v-model="PCDName"></el-input>
         </je-dialog>
     </div>
@@ -61,6 +61,13 @@ export default {
               center:true
             }).then(()=>{
               //save
+              const data = JSON.stringify(this.projectInfo);
+              fs.writeFile('projectInfo.json',data,(err)=>{
+                if(err){
+                  console.log(err)
+                }
+              });
+              console.log('data saved');
               this.$message({
                 type:'info',
                 message:'保存成功'

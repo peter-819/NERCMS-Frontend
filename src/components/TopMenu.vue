@@ -1,74 +1,32 @@
 <template>
     <div class="TopMenu">
-        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
-            <el-submenu index="1">
-                <template slot="title">工程</template>
-                    <el-menu-item index="1-1" @click="ShowDialog('NewProject')">新建</el-menu-item>
-                    <el-menu-item index="1-2">保存</el-menu-item>
-                    <el-menu-item index="1-3">打开</el-menu-item>
-                    <el-menu-item index="1-4">关闭</el-menu-item>
-            <el-submenu index="1-3">
-                <template slot="title">最近</template>
-                    <el-menu-item index="1-3-1">Project1</el-menu-item>
-                    <el-menu-item index="1-3-1">Project2</el-menu-item>
-                    <el-menu-item index="1-3-1">Project3</el-menu-item>
-            </el-submenu>
-          </el-submenu>
-
-          <el-submenu index="2">
-            <template slot="title">图像</template>
-            <el-menu-item index="2-1">打开</el-menu-item>
-            <el-menu-item index="2-2">降噪</el-menu-item>
-            <el-menu-item index="2-3">增强</el-menu-item>
-            <el-menu-item index="2-4">生成点云</el-menu-item>
-            <el-menu-item index="2-4">关闭</el-menu-item>
-          </el-submenu>
-
-          <el-submenu index="3">
-            <template slot="title">点云</template>
-            <el-menu-item index="3-1" @click="ShowDialog('OpenPCD')">打开点云</el-menu-item>
-            <el-menu-item index="3-2">降噪</el-menu-item>
-            <el-menu-item index="3-3">平滑</el-menu-item>
-            <el-menu-item index="3-4">fuse...</el-menu-item>
-            <el-menu-item index="3-5">三维重建</el-menu-item> 
-            <el-menu-item index="3-6">关闭</el-menu-item>
-          </el-submenu>
-
-          <el-submenu index="4">
-            <template slot="title">模型</template>
-            <el-menu-item index="4-1">打开模型</el-menu-item>
-            <el-menu-item index="4-2">检测缺陷</el-menu-item>
-            <el-menu-item index="4-3">关闭模型</el-menu-item>
-          </el-submenu>
-
-          <el-button-group style="margin-top:10px; right:30px; position: absolute;">
-            <el-button icon="el-icon-arrow-left"></el-button>
-            <el-button icon="el-icon-arrow-right"></el-button>
-          </el-button-group>
-
-        </el-menu>
-        </div>
+      <span class="TopMenu-Title">NewProject1</span>
+    </div>
 </template>
 
 <script>
-import {mapMutations, mapState} from 'vuex'
-
 export default {
     name:'TopMenu',
     data(){
         return{
-           activeIndex: '1'
         }
-    },
-    methods: {
-      ...mapMutations('Dialogs',[
-        'ShowDialog',
-        'HideDialog'
-      ])
     }
 }
 </script>
 
 <style scoped>
-  
+.TopMenu{
+  background-color:white;
+  height:25px;
+  box-shadow:0px 3px 6px rgba(112,112,112,0.16);
+  display: flex;
+  align-items:center;
+  justify-content:center;
+}
+.TopMenu-Title{
+  text-align: center;
+  font-family: "Microsoft YaHei","Arial";
+  font-size:14px;
+  color: #606266;
+}
 </style>
