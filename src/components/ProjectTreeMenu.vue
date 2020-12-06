@@ -57,8 +57,8 @@ import Vue from 'vue';
     .NavArrow{
       position:absolute;
       left:100%;
-      top:50%;
-      width:20px;
+      top:40%;
+      width:14px;
       height:80px;
       background-color:$ne-transition-color-3;
       display:flex;

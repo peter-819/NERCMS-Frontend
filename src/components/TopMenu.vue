@@ -20,7 +20,7 @@ export default {
 .TopMenu{
   background-color:white;
   height:25px;
-  box-shadow:0px 3px 6px rgba(112,112,112,0.16);
+  box-shadow:0px 3px 6px rgba(112,112,112,0.1);
   display: flex;
   align-items:center;
   justify-content:center;

@@ -60,15 +60,15 @@ export default {
     .LeftSideBar{
         position: absolute;
         z-index: 9;
-        width: 15%;
-        height: 90%;
+        width: 12%;
+        height: 100%;
         left:0px;
     }
     .RightSideBar{
         position: absolute;
         z-index: 9;
-        width: 15%;
-        height: 90%;
+        width: 12%;
+        height: 100%;
         right:0px;
     }
     .ViewportStyle{

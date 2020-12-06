@@ -1,55 +1,61 @@
 <template>
     <div id="ToolMenu">
-        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
-            <el-menu-item index="0" class="UnSelectable" disabled>
-               <img id="LogoImage" src="/static/resources/images/logoTest.png">
-            </el-menu-item>
-            <el-submenu index="1">
-                <template slot="title">工程</template>
-                    <el-menu-item index="1-1" @click="ShowDialog('NewProject')">新建</el-menu-item>
-                    <el-menu-item index="1-2">保存</el-menu-item>
-                    <el-menu-item index="1-3">打开</el-menu-item>
-                    <el-menu-item index="1-4">关闭</el-menu-item>
-            <el-submenu index="1-3">
-                <template slot="title">最近</template>
-                    <el-menu-item index="1-3-1">Project1</el-menu-item>
-                    <el-menu-item index="1-3-1">Project2</el-menu-item>
-                    <el-menu-item index="1-3-1">Project3</el-menu-item>
-            </el-submenu>
-          </el-submenu>
+        <img src="/static/resources/images/logoTest.png" class="LogoImage">
+        <el-dropdown class="ToolMenuItem" @command="handleCommand">
+          <span class="el-dropdown-link">
+            工程
+            <!-- <i class="el-icon-arrow-down"></i> -->
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item command="NewProject">新建</el-dropdown-item>
+            <el-dropdown-item>保存</el-dropdown-item>
+            <el-dropdown-item>打开</el-dropdown-item>
+            <el-dropdown-item>关闭</el-dropdown-item>
+            <el-dropdown-item>最近</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
 
-          <el-submenu index="2">
-            <template slot="title">图像</template>
-            <el-menu-item index="2-1">打开</el-menu-item>
-            <el-menu-item index="2-2">降噪</el-menu-item>
-            <el-menu-item index="2-3">增强</el-menu-item>
-            <el-menu-item index="2-4">生成点云</el-menu-item>
-            <el-menu-item index="2-4">关闭</el-menu-item>
-          </el-submenu>
+        <el-dropdown class="ToolMenuItem" @command="handleCommand">
+          <span class="el-dropdown-link">
+            图像
+            <!-- <i class="el-icon-arrow-down"></i> -->
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item>打开</el-dropdown-item>
+            <el-dropdown-item>降噪</el-dropdown-item>
+            <el-dropdown-item>增强</el-dropdown-item>
+            <el-dropdown-item>生成点云</el-dropdown-item>
+            <el-dropdown-item>关闭</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
 
-          <el-submenu index="3">
-            <template slot="title">点云</template>
-            <el-menu-item index="3-1" @click="ShowDialog('OpenPCD')">打开点云</el-menu-item>
-            <el-menu-item index="3-2">降噪</el-menu-item>
-            <el-menu-item index="3-3">平滑</el-menu-item>
-            <el-menu-item index="3-4">fuse...</el-menu-item>
-            <el-menu-item index="3-5">三维重建</el-menu-item> 
-            <el-menu-item index="3-6">关闭</el-menu-item>
-          </el-submenu>
+        <el-dropdown class="ToolMenuItem" @command="handleCommand">
+          <span class="el-dropdown-link">
+            点云
+            <!-- <i class="el-icon-arrow-down"></i> -->
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item command="OpenPointCloud">打开</el-dropdown-item>
+            <el-dropdown-item>降噪</el-dropdown-item>
+            <el-dropdown-item>平滑</el-dropdown-item>
+            <el-dropdown-item>fuse...</el-dropdown-item>
+            <el-dropdown-item>三维重建</el-dropdown-item>
+            <el-dropdown-item>关闭</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
 
-          <el-submenu index="4">
-            <template slot="title">模型</template>
-            <el-menu-item index="4-1">打开模型</el-menu-item>
-            <el-menu-item index="4-2">检测缺陷</el-menu-item>
-            <el-menu-item index="4-3">关闭模型</el-menu-item>
-          </el-submenu>
+        <el-dropdown class="ToolMenuItem" @command="handleCommand">
+          <span class="el-dropdown-link">
+            模型
+            <!-- <i class="el-icon-arrow-down"></i> -->
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item>打开</el-dropdown-item>
+            <el-dropdown-item>检测缺陷</el-dropdown-item>
+            <el-dropdown-item>关闭</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
 
-          <!-- <el-button-group style="margin-top:10px; right:30px; position: absolute;">
-            <el-button icon="el-icon-arrow-left"></el-button>
-            <el-button icon="el-icon-arrow-right"></el-button>
-          </el-button-group> -->
-
-        </el-menu>
         </div>
 </template>
 
@@ -67,22 +73,45 @@ export default {
       ...mapMutations('Dialogs',[
         'ShowDialog',
         'HideDialog'
-      ])
+      ]),
+      handleCommand(command){
+        switch(command){
+          case 'NewProject':
+            this.ShowDialog('NewProject');
+            break;
+          case 'OpenPointCloud':
+            this.ShowDialog('OpenPCD');
+            break;
+        }
+      }
     }
 }
 </script>
 
 <style scoped>
 #ToolMenu{
-  /* width: 25vw; */
+  height:40px;
+  background-color: white;
+  display:flex;
+  align-items:center;
+  border-style: solid;
+  border-width: 0px 0px 1px 0px;
+  border-color: rgba(112,112,112,0.16);
+  
+  box-shadow:0px 0px 10px 0px rgba(112,112,112,0.16);
 }
 
-#LogoImage {
-  width: 40px;
-  height: 40px;
+.LogoImage {
+  width: 30px;
+  height: 30px;
+  margin-left:20px;
 }
 .el-menu-item.UnSelectable.is-disabled{
   opacity: 1.0;
   cursor:auto;
+}
+.ToolMenuItem{
+  margin-left:40px;
+  cursor: pointer;
 }
 </style>
