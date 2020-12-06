@@ -11,6 +11,8 @@
         <attribute-menu class="AttributeMenuStyle"></attribute-menu>
     </div>
     <viewport class="ViewportStyle"></viewport>
+    
+    <bottom-menu></bottom-menu>
     <all-dialogs></all-dialogs>
 </div>
 </template>
@@ -22,6 +24,7 @@ import ProjectTreeMenu from '@/components/ProjectTreeMenu'
 import AttributeMenu from '@/components/AttributeMenu'
 import Viewport from '@/components/Viewport'
 import AllDialogs from '@/components/Dialogs/AllDialogs'
+import BottomMenu from '@/components/BottomMenu'
 
 export default {
     name: 'Main',
@@ -35,7 +38,8 @@ export default {
         ProjectTreeMenu,
         AttributeMenu,
         Viewport,
-        AllDialogs
+        AllDialogs,
+        BottomMenu
     }
 }
 </script>

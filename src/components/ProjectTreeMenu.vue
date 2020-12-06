@@ -44,8 +44,8 @@ import Vue from 'vue';
       position: relative;
         width: 100%;
         height:100%;
-        box-shadow: 0px 3px 6px rgba(112, 112, 112, 0.16);
-        border-radius: 8px;
+        // box-shadow: 0px 3px 6px rgba(112, 112, 112, 0.16);
+        // border-radius: 8px;
         background-color: white;
         left:-100%;
 
