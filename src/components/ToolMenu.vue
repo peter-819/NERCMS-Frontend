@@ -74,7 +74,7 @@ export default {
 
 <style scoped>
 #ToolMenu{
-  width: 25vw;
+  /* width: 25vw; */
 }
 
 #LogoImage {

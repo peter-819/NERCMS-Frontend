@@ -4,8 +4,10 @@
         <top-menu></top-menu>
         <tool-menu class="ToolMenu"></tool-menu>
     </div>
-    <div class="SideBar">
+    <div class="LeftSideBar">
         <project-tree-menu class="ProjectTreeMenuStyle"></project-tree-menu>
+    </div>
+    <div class="RightSideBar">
         <attribute-menu class="AttributeMenuStyle"></attribute-menu>
     </div>
     <viewport class="ViewportStyle"></viewport>
@@ -38,7 +40,9 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '../scss/varibles.scss';
+
     #Main{
         width: 100vw;
     }
@@ -49,27 +53,19 @@ export default {
     .ToolMenu{
         /* margin-top: 5px; */
     }
-    .SideBar{
+    .LeftSideBar{
         position: absolute;
         z-index: 9;
         width: 15%;
         height: 90%;
+        left:0px;
     }
-    .ProjectTreeMenuStyle{
-        margin-top:5%;
-        width: 100%;
-        height:50%;
-        box-shadow: 0px 3px 6px rgba(112, 112, 112, 0.16);
-        border-radius: 8px;
-        background-color: white;
-    }
-    .AttributeMenuStyle{
-        margin-top: 5%;
-        width: 100%;
-        height:20%;
-        box-shadow: 0px 3px 6px rgba(112, 112, 112, 0.16);
-        border-radius: 8px;
-        background-color:white;
+    .RightSideBar{
+        position: absolute;
+        z-index: 9;
+        width: 15%;
+        height: 90%;
+        right:0px;
     }
     .ViewportStyle{
         position: absolute;
