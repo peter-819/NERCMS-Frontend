@@ -16,11 +16,11 @@ export default {
     },
     async mounted(){
         var viewer = document.getElementById('viewer');
-        const filepath = '/static/resources/resources/ply/result.ply';
-        await Renderer.LoadPLYFile(viewer,filepath);
+        // const filepath = '/static/resources/resources/ply/result.ply';
+        // await Renderer.LoadPLYFile(viewer,filepath);
 
-        //const filepath = '/static/resources/resources/pcd/binary_zed.pcd';
-        //await Renderer.LoadPCDFile(viewer,filepath);
+        const filepath = '/static/resources/resources/pcd/binary_zed.pcd';
+        await Renderer.LoadPCDFile(viewer,filepath);
     }
 }
 

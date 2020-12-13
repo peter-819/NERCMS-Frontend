@@ -85,6 +85,7 @@ export async function LoadPLYFile(viewer,filepath){
 
 export async function LoadPCDFile(viewer,filepath){
     var scene = new THREE.Scene();
+    scene.background = new THREE.Color( 0x000000 );
     var camera = new THREE.PerspectiveCamera(120, window.innerWidth / window.innerHeight, 0.1, 5000);
     var renderer = new THREE.WebGLRenderer({
         alpha: true,

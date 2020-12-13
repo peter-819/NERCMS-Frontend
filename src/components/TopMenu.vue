@@ -1,6 +1,11 @@
 <template>
     <div class="TopMenu">
-      <span class="TopMenu-Title">工程: NewProject1</span>
+      <div class="IconGroup">
+        <i class="iconfont icon-baocun"></i>
+        <i class="iconfont icon-chexiao"></i>
+        <i class="iconfont icon-zhongzuo"></i>
+      </div>
+      <span class="TopMenu-Title">工程: 2020-04-25-17-08-22</span>
     </div>
 </template>
 
@@ -16,23 +21,26 @@ export default {
 
 <style lang="scss" scoped>
 @import '../scss/varibles.scss';
-
+@import '../scss/icons.scss';
+.IconGroup{
+  position:absolute;
+  left:75px;
+  .iconfont:not(:first-child){
+    margin-left:10px;
+  }
+}
 .TopMenu{
-  background-color:white;
+  background-color: $ne-color-dark-blue;
   height:25px;
   box-shadow:0px 3px 6px rgba(112,112,112,0.1);
   display: flex;
   align-items:center;
   justify-content:center;
-
-  border-style:solid;
-  border-width: 0px 0px 1px 0px;
-  border-bottom-color: rgba(112,112,112,0.16);
 }
 .TopMenu-Title{
   text-align: center;
-  font-family: "Microsoft YaHei","Arial";
+  font-family: $ne-font-family;
   font-size:14px;
-  color: #606266;
+  color: $ne-color-white;
 }
 </style>

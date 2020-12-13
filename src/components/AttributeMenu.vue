@@ -1,7 +1,7 @@
 <template>
     <div id="AttributeMenu" :class="this.isActive?'enter':''">
         <div class="NavArrow" @click="isActive = !isActive">
-            <i class="NavArrowIcon el-icon-arrow-left"></i>
+            <i class="NavArrowIcon el-icon-arrow-right"></i>
         </div>
         <div class="InputField">
             <el-input placeholder="请输入内容" v-model="input1">
@@ -32,17 +32,17 @@ export default {
         // box-shadow: 0px 3px 6px rgba(112, 112, 112, 0.16);
         // border-radius: 8px;
         background-color:white;
-        right:-100%;
+        left:-100%;
 
         transition:transform .3s;
     }
 
     #AttributeMenu.enter{
-        transform:translateX(-100%);
+        transform:translateX(100%);
     }
     .NavArrow{
         position:absolute;
-        right:100%;
+        left:100%;
         top:40%;
         width:14px;
         height:80px;

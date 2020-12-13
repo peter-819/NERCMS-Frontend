@@ -1,18 +1,20 @@
 <template>
 <div id="Main">
     <div class="MenuGroup">
-        <top-menu></top-menu>
-        <tool-menu class="ToolMenu"></tool-menu>
+        <img src="/static/resources/images/logoTest.png" class="LogoImage">
+        <div class="Menus">
+            <top-menu></top-menu>
+            <tool-menu class="ToolMenu"></tool-menu>
+        </div>
     </div>
-    <div class="LeftSideBar">
+    <div class="UpSideBar">
         <project-tree-menu class="ProjectTreeMenuStyle"></project-tree-menu>
     </div>
-    <div class="RightSideBar">
+    <div class="DownSideBar">
         <attribute-menu class="AttributeMenuStyle"></attribute-menu>
     </div>
     <viewport class="ViewportStyle"></viewport>
-    
-    <bottom-menu></bottom-menu>
+
     <all-dialogs></all-dialogs>
 </div>
 </template>
@@ -53,30 +55,47 @@ export default {
     .MenuGroup{
         position:relative;
         z-index:10;
+        display: flex;
+        flex-flow:row nowrap;
+        justify-content: flex-start;
+        // align-items: stretch;
+    }
+    .LogoImage{
+        width:65px;
+        height:65px;
+    }
+    .Menus{
+        width:100%;
     }
     .ToolMenu{
         /* margin-top: 5px; */
     }
-    .LeftSideBar{
+    .UpSideBar{
         position: absolute;
         z-index: 9;
-        width: 12%;
-        height: 100%;
+        width: 13%;
+        height: 40vh;
         left:0px;
+        margin-top:1vh;
     }
-    .RightSideBar{
+    .DownSideBar{
         position: absolute;
         z-index: 9;
-        width: 12%;
-        height: 100%;
-        right:0px;
+        width: 13%;
+        height: 28vh;
+        left:0px;
+        margin-top:42vh;
     }
     .ViewportStyle{
         position: absolute;
         z-index: 0;
-        right:0px;
+        left: 0vw;
         top: 0px;
         width:100%;
         height:100vh;
+        border-style: solid;
+        border-width: 100px 35px 35px 13vw;
+        border-color: $ne-background-color;
+        box-sizing: border-box;
     }
 </style>

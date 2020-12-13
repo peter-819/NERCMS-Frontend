@@ -1,7 +1,7 @@
 <template>
     <div id="ToolMenu">
-        <img src="/static/resources/images/logoTest.png" class="LogoImage">
-        <el-dropdown class="ToolMenuItem" @command="handleCommand">
+      <div class="ItemGrid">
+        <el-dropdown class="ToolMenuItem" @command="handleCommand" trigger="click">
           <span class="el-dropdown-link">
             工程
             <!-- <i class="el-icon-arrow-down"></i> -->
@@ -14,8 +14,10 @@
             <el-dropdown-item>最近</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
+      </div>
 
-        <el-dropdown class="ToolMenuItem" @command="handleCommand">
+      <div class="ItemGrid">
+        <el-dropdown class="ToolMenuItem" @command="handleCommand" trigger="click">
           <span class="el-dropdown-link">
             图像
             <!-- <i class="el-icon-arrow-down"></i> -->
@@ -28,8 +30,10 @@
             <el-dropdown-item>关闭</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
+      </div>
 
-        <el-dropdown class="ToolMenuItem" @command="handleCommand">
+      <div class="ItemGrid">
+        <el-dropdown class="ToolMenuItem" @command="handleCommand" trigger="click">
           <span class="el-dropdown-link">
             点云
             <!-- <i class="el-icon-arrow-down"></i> -->
@@ -38,13 +42,15 @@
             <el-dropdown-item command="OpenPointCloud">打开</el-dropdown-item>
             <el-dropdown-item>降噪</el-dropdown-item>
             <el-dropdown-item>平滑</el-dropdown-item>
-            <el-dropdown-item>fuse...</el-dropdown-item>
+            <el-dropdown-item>融合</el-dropdown-item>
             <el-dropdown-item>三维重建</el-dropdown-item>
             <el-dropdown-item>关闭</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
+      </div>
 
-        <el-dropdown class="ToolMenuItem" @command="handleCommand">
+      <div class="ItemGrid">
+        <el-dropdown class="ToolMenuItem" @command="handleCommand" trigger="click">
           <span class="el-dropdown-link">
             模型
             <!-- <i class="el-icon-arrow-down"></i> -->
@@ -55,7 +61,7 @@
             <el-dropdown-item>关闭</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
-
+      </div>
         </div>
 </template>
 
@@ -88,17 +94,39 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '../scss/varibles.scss';
+.ItemGrid{
+  height:100%;
+  width:75px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  .ToolMenuItem{
+    cursor:pointer;
+  }
+  &:hover{
+    background-color: $ne-menu-color;
+  }
+}
+.el-dropdown-menu__item{
+  background-color:$ne-menu-color;
+  color:$ne-color-white;
+  width:100px;
+  &:hover{
+    background-color:$ne-color-light-blue;
+    color:$ne-color-white;
+  }
+}
+.el-dropdown-menu{
+  background-color:$ne-menu-color;
+  border-width:0px;
+}
 #ToolMenu{
   height:40px;
-  background-color: white;
+  background-color: $ne-color-dark-blue;
   display:flex;
   align-items:center;
-  border-style: solid;
-  border-width: 0px 0px 1px 0px;
-  border-color: rgba(112,112,112,0.16);
-  
-  box-shadow:0px 0px 10px 0px rgba(112,112,112,0.16);
 }
 
 .LogoImage {
@@ -111,7 +139,9 @@ export default {
   cursor:auto;
 }
 .ToolMenuItem{
-  margin-left:40px;
-  cursor: pointer;
+  .el-dropdown-link{
+    font-family: $ne-font-family;
+    color:$ne-color-white;
+  }
 }
 </style>
