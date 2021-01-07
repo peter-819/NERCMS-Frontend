@@ -1,7 +1,7 @@
 <template>
 <div id="Main">
     <div class="MenuGroup">
-        <img src="/static/resources/images/logoTest.png" class="LogoImage">
+        <img src="/static/resources/images/logoWhitePNG.png" class="LogoImage">
         <div class="Menus">
             <top-menu></top-menu>
             <tool-menu class="ToolMenu"></tool-menu>
@@ -58,11 +58,14 @@ export default {
         display: flex;
         flex-flow:row nowrap;
         justify-content: flex-start;
-        // align-items: stretch;
+        align-items: center;
+        background-color:$ne-color-dark-blue;
     }
     .LogoImage{
-        width:65px;
-        height:65px;
+        width:50px;
+        height:50px;
+        background-color:$ne-color-dark-blue;
+        margin-left:10px;
     }
     .Menus{
         width:100%;
@@ -94,7 +97,7 @@ export default {
         width:100%;
         height:100vh;
         border-style: solid;
-        border-width: 100px 35px 35px 13vw;
+        border-width: 65px 0px 0px 0px;
         border-color: $ne-background-color;
         box-sizing: border-box;
     }

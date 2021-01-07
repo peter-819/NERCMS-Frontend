@@ -40,7 +40,7 @@
           </span>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item command="OpenPointCloud">打开</el-dropdown-item>
-            <el-dropdown-item>降噪</el-dropdown-item>
+            <el-dropdown-item command="Denoise">降噪</el-dropdown-item>
             <el-dropdown-item>平滑</el-dropdown-item>
             <el-dropdown-item>融合</el-dropdown-item>
             <el-dropdown-item>三维重建</el-dropdown-item>
@@ -88,6 +88,9 @@ export default {
           case 'OpenPointCloud':
             this.ShowDialog('OpenPCD');
             break;
+          case 'Denoise':
+            this.ShowDialog('Denoise');
+            break;
         }
       }
     }
@@ -96,6 +99,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../scss/varibles.scss';
+
 .ItemGrid{
   height:100%;
   width:75px;
@@ -107,6 +111,9 @@ export default {
   }
   &:hover{
     background-color: $ne-menu-color;
+  }
+  &:first-child{
+    margin-left:10px;
   }
 }
 .el-dropdown-menu__item{
@@ -127,12 +134,6 @@ export default {
   background-color: $ne-color-dark-blue;
   display:flex;
   align-items:center;
-}
-
-.LogoImage {
-  width: 30px;
-  height: 30px;
-  margin-left:20px;
 }
 .el-menu-item.UnSelectable.is-disabled{
   opacity: 1.0;

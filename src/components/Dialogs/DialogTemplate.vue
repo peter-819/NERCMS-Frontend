@@ -5,8 +5,10 @@
             :visible.sync="visible"
             width="30%"
         >
-        <slot></slot>
-        <el-button type="primary" @click="handleClose">确定</el-button>
+        <div class="JeDialogBody">
+          <slot></slot>
+          <el-button class="ConfirmButton" type="primary" @click="handleClose">确定</el-button>
+        </div>
         </el-dialog>
     </div>
 </template>
@@ -22,3 +24,13 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scope>
+  .JeDialogBody{
+    display:flex;
+    flex-direction:column;
+  }
+  .ConfirmButton{
+    margin-top:20px;
+  }
+</style>

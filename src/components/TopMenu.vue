@@ -5,16 +5,23 @@
         <i class="iconfont icon-chexiao"></i>
         <i class="iconfont icon-zhongzuo"></i>
       </div>
-      <span class="TopMenu-Title">工程: 2020-04-25-17-08-22</span>
+      <span class="TopMenu-Title">{{ProjectName}}</span>
     </div>
 </template>
 
 <script>
+import {mapState} from 'vuex';
 export default {
     name:'TopMenu',
     data(){
         return{
+
         }
+    },
+    computed:{
+      ...mapState('ProjectInfo',{
+        ProjectName:state=>state.project.name
+      })
     }
 }
 </script>
@@ -24,9 +31,9 @@ export default {
 @import '../scss/icons.scss';
 .IconGroup{
   position:absolute;
-  left:75px;
+  left:95px;
   .iconfont:not(:first-child){
-    margin-left:10px;
+    margin-left:20px;
   }
 }
 .TopMenu{
