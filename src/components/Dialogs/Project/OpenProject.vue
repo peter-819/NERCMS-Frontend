@@ -2,8 +2,13 @@
     <div id="OpenProjectDialog">
       <je-dialog title="打开工程" :handleConfirm="HandleOpenProject">
         <span>工程目录</span>
-        <div v-for="item in this.projectList" :key="item.projectId">
-          <span>{{item.projectName}}</span>
+        <div v-if="this.projectList.mutating">
+          <span>loading....</span>
+        </div>
+        <div v-else>
+          <div v-for="item in this.projectList.data" :key="item.projectId">
+            <span>{{item.projectName}}</span>
+          </div>
         </div>
       </je-dialog>
     </div>
@@ -28,7 +33,7 @@ export default {
   },
   methods:{
     HandleOpenProject(){
-
+      console.log(this.projectList);
     }
   }
 }

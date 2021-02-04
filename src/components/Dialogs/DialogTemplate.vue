@@ -4,6 +4,7 @@
             :title="title"
             visible
             width="30%"
+            @close="OnDialogClose"
         >
         <div class="JeDialogBody">
           <slot></slot>
@@ -14,12 +15,22 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex'
+
 export default {
     name:'JeDialog',
     props:['title','handleConfirm','handleClose'],
     data(){
         return{
         }
+    },
+    methods:{
+      ...mapMutations('Dialogs',[
+        'HideDialog'
+      ]),
+      OnDialogClose(){
+        this.HideDialog();
+      }
     }
 }
 </script>

@@ -95,19 +95,19 @@ export default {
                 data:[],
                 mutating:true
             });
-            // Vue.http.post(
-            //   'http://kikigogogo.gz2vip.idcfengye.com/nr/project/find/list',
-            //   {},
-            //   {emulateJSON:true}
-            // ).then(res=>{
-            //   this.SetUserProjectsList({
-            //     data:res.body.data,
-            //     mutating:false
-            //   });
-            //   console.log(res.body);
-            // }).catch(res=>{
+            Vue.http.post(
+              'http://kikigogogo.gz2vip.idcfengye.com/nr/project/find/list',
+              {},
+              {emulateJSON:true}
+            ).then(res=>{
+              this.SetUserProjectsList({
+                data:res.body.data,
+                mutating:false
+              });
+              console.log(res.body.data);
+            }).catch(res=>{
               
-            // });
+            });
             this.ShowDialog('OpenProject');
             break;
 

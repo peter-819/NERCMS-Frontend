@@ -15,8 +15,6 @@
 </template>
 
 <script>
-import {mapState} from 'vuex';
-import Vue from 'vue';
 import ProjectTreeForm from '@/components/SideBar/ProjectTreeForm'
 import SideBarTags from '@/components/SideBar/SideBarTags'
 

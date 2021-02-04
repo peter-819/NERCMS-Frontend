@@ -1,10 +1,5 @@
 <template>
     <div id="AllDialogs">
-        <!-- <new-project></new-project>
-        <open-project></open-project>
-        <open-pcd></open-pcd>
-        <denoise-pcd></denoise-pcd> -->
-
       <component v-if="this.currentDialog!=''" :is="currentDialog"></component>
       <span>{{this.currentDialog}}</span>
     </div>
@@ -33,7 +28,7 @@ export default {
     }
   },
   computed:{
-    ...mapState('ProjectInfo',{
+    ...mapState('Dialogs',{
       currentDialog: state=>state.CurrentDialog
     }),
   }

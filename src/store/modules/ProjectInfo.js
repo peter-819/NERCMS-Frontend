@@ -25,7 +25,7 @@ const actions = {
 const mutations = {
     SetProjectAttrib:(state,{name,attrib}) => Vue.set(state.CurrentProject,name,attrib),
     AppendProjectChild:(state,child)=>state.CurrentProject.childNodes.push(child),
-    SetUserProjectsList:(state,obj)=>Vue.set(state,state.UserProjectsList,obj)
+    SetUserProjectsList:(state,obj)=>Vue.set(state,'UserProjectsList',obj)
 }
 
 export default {
