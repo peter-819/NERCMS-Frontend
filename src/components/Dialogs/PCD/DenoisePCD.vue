@@ -1,6 +1,6 @@
 <template>
-  <div id="DenoiseDialog">
-    <je-dialog title="点云降噪" :visible="GetDialogVisiblity('Denoise')" :handleClose="HandleDenoise">
+  <div id="DenoisePCD">
+    <je-dialog title="点云降噪" :handleConfirm="HandleDenoise">
       <el-radio-group @change="MethodInfo = []" v-model="radioSelected">
         <el-radio-button label="method1">方法1</el-radio-button>
         <el-radio-button label="method2">方法2</el-radio-button>
@@ -14,10 +14,10 @@
 </template>
 
 <script>
-import JeDialog from './DialogTemplate';
+import JeDialog from '../DialogTemplate';
 import {mapState,mapGetters,mapMutations} from 'vuex';
 import Vue from 'vue';
-import DialogForm from './DialogForm';
+import DialogForm from '../DialogForm';
 
 Vue.component('denoise-method1', {
   template:`<dialog-form v-model="this.info" @input="handleInput"></dialog-form>`,
@@ -47,7 +47,7 @@ Vue.component('denoise-method3', {
   template:'<span>method3</span>'
 });
 export default {
-  name:"DenoiseDialog",
+  name:"DenoisePCD",
   components:{
     JeDialog,
   },
@@ -58,16 +58,13 @@ export default {
     }
   },
   computed:{
-    ...mapGetters('Dialogs',[
-      'GetDialogVisiblity'
-      ]),
   },
   methods:{
     ...mapMutations('Dialogs',[
       'HideDialog'
     ]),
     HandleDenoise(){
-      this.HideDialog('Denoise');
+      this.HideDialog();
     },
     HandleMethodInfo(e){
       this.MethodInfo = e;
@@ -77,5 +74,5 @@ export default {
 </script>
 
 <style lang="scss" scope>
-@import '../../scss/varibles.scss';
+@import '../../../scss/varibles.scss';
 </style>

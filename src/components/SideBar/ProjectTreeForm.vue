@@ -20,7 +20,7 @@ export default {
 	},
   computed:{
   	...mapState('ProjectInfo',{
-    	projectTree: state=>[state.project]
+    	projectTree: state=>[state.CurrentProject]
   	})
   },
   methods: {

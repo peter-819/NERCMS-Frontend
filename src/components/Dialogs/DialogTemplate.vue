@@ -2,12 +2,12 @@
     <div id="JeDialog">
         <el-dialog 
             :title="title"
-            :visible.sync="visible"
+            visible
             width="30%"
         >
         <div class="JeDialogBody">
           <slot></slot>
-          <el-button class="ConfirmButton" type="primary" @click="handleClose">确定</el-button>
+          <el-button class="ConfirmButton" type="primary" @click="handleConfirm">确定</el-button>
         </div>
         </el-dialog>
     </div>
@@ -16,10 +16,9 @@
 <script>
 export default {
     name:'JeDialog',
-    props:['title','visible','handleClose'],
+    props:['title','handleConfirm','handleClose'],
     data(){
         return{
-
         }
     }
 }

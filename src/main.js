@@ -11,10 +11,12 @@ import VueI18n from 'vue-i18n'
 import 'es6-promise/auto'
 
 import store from './store'
+import VueResource  from 'vue-resource';
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.use(VueI18n)
+Vue.use(VueResource)
 
 const i18n = new VueI18n({
   locale:'cn',

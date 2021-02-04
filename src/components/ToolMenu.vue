@@ -9,7 +9,7 @@
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item command="NewProject">新建</el-dropdown-item>
             <el-dropdown-item>保存</el-dropdown-item>
-            <el-dropdown-item>打开</el-dropdown-item>
+            <el-dropdown-item command="OpenProject">打开</el-dropdown-item>
             <el-dropdown-item>关闭</el-dropdown-item>
             <el-dropdown-item>最近</el-dropdown-item>
           </el-dropdown-menu>
@@ -67,6 +67,7 @@
 
 <script>
 import {mapMutations, mapState} from 'vuex'
+import Vue from 'vue';
 
 export default {
     name:'ToolMenu',
@@ -80,11 +81,37 @@ export default {
         'ShowDialog',
         'HideDialog'
       ]),
+      ...mapMutations('ProjectInfo',[
+        'SetUserProjectsList'
+      ]),
       handleCommand(command){
         switch(command){
+          // --------- PROEJECT --------- //
           case 'NewProject':
             this.ShowDialog('NewProject');
             break;
+          case 'OpenProject':
+            this.SetUserProjectsList({
+                data:[],
+                mutating:true
+            });
+            // Vue.http.post(
+            //   'http://kikigogogo.gz2vip.idcfengye.com/nr/project/find/list',
+            //   {},
+            //   {emulateJSON:true}
+            // ).then(res=>{
+            //   this.SetUserProjectsList({
+            //     data:res.body.data,
+            //     mutating:false
+            //   });
+            //   console.log(res.body);
+            // }).catch(res=>{
+              
+            // });
+            this.ShowDialog('OpenProject');
+            break;
+
+          // --------- POINT CLOUD -------- //
           case 'OpenPointCloud':
             this.ShowDialog('OpenPCD');
             break;

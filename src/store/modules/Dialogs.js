@@ -1,17 +1,16 @@
 import Vue from 'vue'
 const state = () => ({
-    visiblity:new Object
+    CurrentDialog:''
 })
 
 const getters = {
-    GetDialogVisiblity:(state)=>(dialogName)=>state.visiblity[dialogName]
 }
 
 const actions = {}
 
 const mutations = {
-    ShowDialog: (state,dialogName)=>Vue.set(state.visiblity,dialogName,true),
-    HideDialog: (state,dialogName)=>Vue.set(state.visiblity,dialogName,false)
+    ShowDialog: (state,dialogName)=>state.CurrentDialog=dialogName,
+    HideDialog: (state)=>state.CurrentDialog='',
 }
 
 export default {
