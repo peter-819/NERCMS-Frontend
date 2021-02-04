@@ -9,6 +9,7 @@
 <script>
 import JeDialog from '../DialogTemplate'
 import {mapState,mapMutations, mapGetters} from 'vuex'
+import Vue from 'vue';
 
 export default {
     components:{
@@ -32,6 +33,37 @@ export default {
       ...mapMutations('Dialogs',[
         'HideDialog'
       ]),
+      RequireNewProject()
+      {
+        Vue.http.post(
+          'http://kikigogogo.gz2vip.idcfengye.com/nr/project/create',
+          {name:this.ProjectName},
+          {emulateJSON:true}
+        ).then(res=>{
+          if(res.body.code == 0)
+          {
+            this.SetProjectAttrib({name:'id', attrib: res.data.projectId});
+            this.SetProjectAttrib({name:'isDone',attrib:true});
+            this.SetProjectAttrib({name:'name', attrib: this.ProjectName});
+            console.log('new project ' + res.body.data);
+            this.HideDialog();
+            this.$message({
+              type:'info',
+              message:'创建成功'
+            });
+          }
+          else if(res.body.code == 5)
+          {
+            this.$message({
+              type:'info',
+              message:'已存在名为'+res.data.projectName+'的工程'
+            });
+            console.log('conflict');
+          }
+        }).catch(res=>{
+          console.log('failed ' + res);
+        });
+      },
       HandleNewProject(){
         if(this.projectInfo.isDone){
           this.$confirm('此操作将关闭当前工程，是否继续?','提示',{
@@ -48,28 +80,29 @@ export default {
               center:true
             }).then(()=>{
               //save
-              const data = JSON.stringify(this.projectInfo);
-              fs.writeFile('projectInfo.json',data,(err)=>{
-                if(err){
-                  console.log(err)
-                }
-              });
-              console.log('data saved');
+
               this.$message({
                 type:'info',
                 message:'保存成功'
               });
+              this.RequireNewProject();
             }).catch(()=>{
-
+              this.$message({
+                type:'info',
+                message:'覆盖当前工程'
+              });
+              this.RequireNewProject();
             });
           }).catch(()=>{
-
+            
           });
         }
-        this.SetProjectAttrib({name:'isDone',attrib:true});
-        this.SetProjectAttrib({name:'name', attrib: this.ProjectName});
-        this.ProjectName = '';
-        this.HideDialog();
+        else{
+          this.RequireNewProject();
+        }
+        //this.SetProjectAttrib({name:'isDone',attrib:true});
+        //this.SetProjectAttrib({name:'name', attrib: this.ProjectName});
+        
       }
     }
 }

@@ -15,7 +15,13 @@ const state = () => ({
 })
 
 const getters = {
-    
+    UserProjectListData: state=>state.UserProjectsList.data.map(p=>{
+        // console.log(p.projectCreationTime);
+        var t = Object.assign({},p);
+        t.projectCreationTime = p.projectCreationTime.slice(0,19).replace('T',' ');
+        t.projectModificationTime = p.projectModificationTime.slice(0,19).replace('T',' ');
+        return t;
+    })
 }
 
 const actions = {
