@@ -1,13 +1,13 @@
 <template>
   <div id="DenoiseDialog">
     <je-dialog title="点云降噪" :visible="GetDialogVisiblity('Denoise')" :handleClose="HandleDenoise">
-      <el-radio-group v-model="radioSelected">
+      <el-radio-group @change="MethodInfo = []" v-model="radioSelected">
         <el-radio-button label="method1">方法1</el-radio-button>
         <el-radio-button label="method2">方法2</el-radio-button>
         <el-radio-button label="method3">方法3</el-radio-button>
       </el-radio-group>
 
-      <component :is="this.radioSelected" @input="this.MethodInfo=$event"></component>
+      <component :is="'denoise-' + this.radioSelected" @input="HandleMethodInfo($event)"></component>
       <span>{{this.MethodInfo}}</span>
     </je-dialog>
   </div>
@@ -16,10 +16,11 @@
 <script>
 import JeDialog from './DialogTemplate';
 import {mapState,mapGetters,mapMutations} from 'vuex';
+import Vue from 'vue';
 import DialogForm from './DialogForm';
-var method1Obj = {
-  name:'method1Obj',
-  template:`<dialog-form v-model="this.info" @input="this.$emit('input',info)"></dialog-form>`,
+
+Vue.component('denoise-method1', {
+  template:`<dialog-form v-model="this.info" @input="handleInput"></dialog-form>`,
   components:{
     DialogForm
   },
@@ -32,26 +33,28 @@ var method1Obj = {
         }
       ]
     }
+  },
+  methods:{
+    handleInput(){
+      this.$emit('input',this.info);
+    }
   }
-};
-var method2Obj = {
+});
+Vue.component('denoise-method2', {
   template:'<span>method2</span>'
-};
-var method3Obj = {
+});
+Vue.component('denoise-method3', {
   template:'<span>method3</span>'
-};
+});
 export default {
   name:"DenoiseDialog",
   components:{
     JeDialog,
-    Method1:method1Obj,
-    Method2:method2Obj,
-    Method3:method3Obj,
   },
   data(){
     return {
       radioSelected:'method1',
-      MethodInfo:{}
+      MethodInfo:[]
     }
   },
   computed:{
@@ -65,6 +68,9 @@ export default {
     ]),
     HandleDenoise(){
       this.HideDialog('Denoise');
+    },
+    HandleMethodInfo(e){
+      this.MethodInfo = e;
     }
   }
 }
