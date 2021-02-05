@@ -15,9 +15,9 @@
 
 <script>
 import JeDialog from '../DialogTemplate';
-import {mapState,mapGetters,mapMutations} from 'vuex';
 import Vue from 'vue';
 import DialogForm from '../DialogForm';
+import {BaseMixin,DialogMixin} from '../DialogMixins'
 
 Vue.component('denoise-method1', {
   template:`<dialog-form v-model="this.info" @input="handleInput"></dialog-form>`,
@@ -48,6 +48,7 @@ Vue.component('denoise-method3', {
 });
 export default {
   name:"DenoisePCD",
+  mixins:[BaseMixin,DialogMixin],
   components:{
     JeDialog,
   },
@@ -60,9 +61,6 @@ export default {
   computed:{
   },
   methods:{
-    ...mapMutations('Dialogs',[
-      'HideDialog'
-    ]),
     HandleDenoise(){
       this.HideDialog();
     },

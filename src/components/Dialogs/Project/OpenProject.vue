@@ -42,10 +42,11 @@
 
 <script>
 import JeDialog from '../DialogTemplate'
-import {mapState,mapMutations, mapGetters} from 'vuex'
 import Vue from 'vue'
+import {BaseMixin,DialogMixin,ProjectMixin} from '../DialogMixins'
 
 export default {
+  mixins:[BaseMixin,DialogMixin,ProjectMixin],
   components:{
       JeDialog
   },
@@ -53,13 +54,6 @@ export default {
       return{
         currentRow:null
       }
-  },
-  computed:{
-    ...mapState('ProjectInfo',{
-      projectList: state=>state.UserProjectsList
-    }),
-    ...mapGetters('ProjectInfo',['UserProjectListData']),
-    ...mapGetters('Server',['GetUrl'])
   },
   mounted:function(){
     this.SetUserProjectsList({
@@ -81,9 +75,6 @@ export default {
     });
   },
   methods:{
-    ...mapMutations('ProjectInfo',[
-      'SetUserProjectsList'
-    ]),
     HandleOpenProject(){
       //TODO
     },

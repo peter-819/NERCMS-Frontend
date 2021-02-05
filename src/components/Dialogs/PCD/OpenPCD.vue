@@ -9,9 +9,10 @@
 
 <script>
 import JeDialog from '../DialogTemplate'
-import {mapState,mapMutations, mapGetters} from 'vuex'
+import {BaseMixin,DialogMixin} from '../DialogMixins'
 
 export default {
+    mixins:[DialogMixin,BaseMixin],
     components:{
         JeDialog
     },
@@ -24,9 +25,6 @@ export default {
     computed:{
     },
     methods: {
-      ...mapMutations('Dialogs',[
-        'HideDialog'
-      ]),
       HandleOpenPCD(){
         this.AppendProjectChild({
             filepath:this.PCDFilePath,
