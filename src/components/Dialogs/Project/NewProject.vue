@@ -23,7 +23,8 @@ export default {
     computed:{
       ...mapState('ProjectInfo',{
         projectInfo: state=>state.CurrentProject
-      })
+      }),
+      ...mapGetters('Server',['GetUrl'])
     },
     methods: {
       ...mapMutations('ProjectInfo',[
@@ -36,7 +37,7 @@ export default {
       RequireNewProject()
       {
         Vue.http.post(
-          'http://kikigogogo.gz2vip.idcfengye.com/nr/project/create',
+          this.GetUrl('/nr/project/create'),
           {name:this.ProjectName},
           {emulateJSON:true}
         ).then(res=>{

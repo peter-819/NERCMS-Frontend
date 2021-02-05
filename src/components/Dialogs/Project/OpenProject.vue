@@ -59,6 +59,26 @@ export default {
       projectList: state=>state.UserProjectsList
     }),
     ...mapGetters('ProjectInfo',['UserProjectListData']),
+    ...mapGetters('Server',['GetUrl'])
+  },
+  mounted:function(){
+    this.SetUserProjectsList({
+        data:[],
+        mutating:true
+    });
+    Vue.http.post(
+      this.GetUrl('/nr/project/find/list'),
+      {},
+      {emulateJSON:true}
+    ).then(res=>{
+      this.SetUserProjectsList({
+        data:res.body.data,
+        mutating:false
+      });
+      console.log(res.body.data);
+    }).catch(res=>{
+
+    });
   },
   methods:{
     ...mapMutations('ProjectInfo',[
@@ -70,7 +90,7 @@ export default {
     HandleDelete(index,row){
       console.log(row.projectId);
       Vue.http.post(
-        'http://kikigogogo.gz2vip.idcfengye.com/nr/project/delete',
+        GetUrl('/nr/project/delete'),
         {id:row.projectId},
         {emulateJSON:true}
       ).then(res=>{

@@ -66,8 +66,7 @@
 </template>
 
 <script>
-import {mapMutations, mapState} from 'vuex'
-import Vue from 'vue';
+import {mapGetters, mapMutations, mapState} from 'vuex'
 
 export default {
     name:'ToolMenu',
@@ -81,9 +80,6 @@ export default {
         'ShowDialog',
         'HideDialog'
       ]),
-      ...mapMutations('ProjectInfo',[
-        'SetUserProjectsList'
-      ]),
       handleCommand(command){
         switch(command){
           // --------- PROEJECT --------- //
@@ -91,23 +87,6 @@ export default {
             this.ShowDialog('NewProject');
             break;
           case 'OpenProject':
-            this.SetUserProjectsList({
-                data:[],
-                mutating:true
-            });
-            Vue.http.post(
-              'http://kikigogogo.gz2vip.idcfengye.com/nr/project/find/list',
-              {},
-              {emulateJSON:true}
-            ).then(res=>{
-              this.SetUserProjectsList({
-                data:res.body.data,
-                mutating:false
-              });
-              console.log(res.body.data);
-            }).catch(res=>{
-              
-            });
             this.ShowDialog('OpenProject');
             break;
 
