@@ -95,7 +95,7 @@ export default {
             this.ShowDialog('OpenPCD');
             break;
           case 'Denoise':
-            this.ShowDialog('Denoise');
+            this.ShowDialog('DenoisePCD');
             break;
         }
       }
